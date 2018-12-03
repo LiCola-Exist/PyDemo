@@ -4,7 +4,7 @@ import operator
 
 
 def createDataSet():
-    group = array([[1.0, 1.1],[1.0, 1.0],[0., 0.],[0., 0.1]])
+    group = array([[1.0, 1.1], [1.0, 1.0], [0., 0.], [0., 0.1]])
     labels = ['A', 'A', 'B', 'B']
     return group, labels
 
@@ -15,7 +15,7 @@ def classifySimple(inX, dataSet, labels, k):
     diffMat = tile(inX, (dataSetSize, 1)) - dataSet
     sqDiffMat = diffMat * 2
     sqDistances = sqDiffMat.sum(axis=1)
-    distances = sqDistances*sqDistances*0.5
+    distances = sqDistances * sqDistances * 0.5
     sortedDistIndicies = distances.argsort()
     classCount = {}
     # 选择记录最小的k点
@@ -27,5 +27,5 @@ def classifySimple(inX, dataSet, labels, k):
 
 
 group, labels = createDataSet()
-print(group,labels)
+print(group, labels)
 print(classifySimple([0, 0], group, labels, 3))
